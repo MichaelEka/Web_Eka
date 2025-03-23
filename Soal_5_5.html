@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal 5</title>
+    <style>
+        ul{
+            list-style-type: none;
+            
+        }
+
+        .normal{
+            margin-right: 3px;
+            float: left;
+            background-color: white;
+            color: black;
+            border-width: 2px;
+            border-style: dotted;
+            border-color:grey;
+            padding-left: 80px;
+            padding-right: 70px;
+            text-align: center;
+        }
+
+        .normal:hover{
+            background-color: black;
+            color: white;
+        }
+
+        .list2 {
+            margin-right: 3px;
+            float: left;
+            background-color: white;
+            color: black;
+            border-width: 2px;
+            border-style: dotted;
+            border-color:grey;
+            padding-left: 80px;
+            padding-right: 70px;
+            text-align: center;
+        }
+
+        .list2:hover .submenu{
+            display: block;
+        }
+
+        .submenu{
+            display: none;
+            background-color: white;
+            color: black;
+            border-width: 2px;
+            border-style: dotted;
+            border-color:grey;
+            width: 187px;
+        }
+        .drop{
+            position: absolute;
+            left: 204px;
+        }
+        .submenu:hover{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="normal"><a>Home</a></li>
+        <li class="list2"><a>News</a>
+            <ul class="drop">
+                <li class="submenu"><a >Sport</a></li>
+                <li class="submenu"><a>Music</a></li>
+                <li class="submenu"><a>Movie</a></li>
+            </ul>
+        </li>
+        <li class="normal"><a>Contact</a></li>
+        <li class="normal"><a>About</a></li>
+    </ul>
+</body>
+</html>
