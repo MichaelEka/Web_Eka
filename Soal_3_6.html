@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal 3</title>
+    <style>
+        .piramida {
+            margin-top: 40px;
+            width: 800px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .kotak {
+            width: 30px;
+            height: 40px;
+            background-color: orange;
+            margin: 1px;
+        }
+    </style>
+</head>
+<body>
+    <label for="tinggi">Tinggi Piramida:</label>
+    <input id="tinggi" required></br>
+    <button onclick="buatPiramida()">Proses</button>
+    <div id="piramida"></div>
+
+    <script>
+        function buatPiramida() {
+            var tinggi = document.getElementById('tinggi').value;
+            var piramida = document.getElementById('piramida');
+            piramida.innerHTML = ''
+
+            for (var i = 0; i < tinggi; i++) {
+                var row = document.createElement('div');
+                row.className = 'row';
+                var jumlahBlok = (2 * i) + 1;
+
+                for (var j = 0; j < jumlahBlok; j++) {
+                    var kotak = document.createElement('div');
+                    kotak.className = 'kotak';
+                    row.appendChild(kotak);
+                }
+                piramida.appendChild(row);
+            }
+        }
+    </script>
+</body>
+</html>

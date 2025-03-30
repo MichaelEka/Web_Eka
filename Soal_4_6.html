@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal 4</title>
+    <style>
+        table {
+            width: 120px;
+            height: 40px;
+            border: 2px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 2px solid black;
+            color: blue;
+        }
+
+        button {
+            margin-right: 15px;
+            border: 1px solid gray;
+            border-radius: 4px;
+            color: blue;
+            background-color: rgb(245, 245, 245);
+        }
+
+        button:hover {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <th>Input :</th>
+                <td><input type="text" id="input"/></td>
+            </tr>
+            <tr>
+                <th>Output :</th>
+                <td><input type="text" id="output" disabled /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <select id="pilihopsi">
+                        <option value="decimal-biner">Decimal-Biner</option>
+                        <option value="biner-decimal">Biner-Decimal</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button onclick="proses()">PROSES</button>
+                    <button onclick="reset()">RESET</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function desimalkebinary(decimal) {
+            var binary = "";
+            while (decimal > 0) {
+                binary = (decimal % 2) + binary;
+                decimal = Math.floor(decimal / 2);
+            }
+            var binary2 = "";
+            var kekurangan = 8 - binary.length;
+            for (var i = 0; i < kekurangan; i++) {
+                binary2 += "0";
+            }
+            binary2 += binary;
+            return binary2;
+        }
+
+        function binarykedesimal(binary) {
+            return parseInt(binary, 2);
+        }
+
+        function proses() {
+            var input = document.getElementById('input').value;
+            var pilihopsi = document.getElementById('pilihopsi').value;
+            var output = '';
+
+            if (pilihopsi == 'decimal-biner') {
+                var decimal = parseInt(input);
+                if (isNaN(decimal) || decimal < 0 || decimal > 255) {
+                    return;
+                }
+                output = desimalkebinary(decimal);
+            } else if (pilihopsi =='biner-decimal') {
+                if (!/^[01]{8}$/.test(input)) {
+                    return;
+                }
+                output = binarykedesimal(input);
+            }
+            document.getElementById('output').value = output;
+        }
+
+        function reset() {
+            document.getElementById('input').value = '';
+            document.getElementById('output').value = '';
+            document.getElementById('pilihopsi').selectedIndex = 0;
+        }
+    </script>
+</body>
+</html>

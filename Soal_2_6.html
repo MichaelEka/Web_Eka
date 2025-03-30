@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal 2</title>
+    <style>
+        table {
+            border: 2px solid black;
+        }
+
+        th, td {
+            border: 2px solid black;
+            padding: 6px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="tabel-container">
+    </div>
+    <script>
+        var angka;
+
+        while (true) {
+            angka = prompt("A number?");
+            if (angka !== null && !isNaN(parseInt(angka))) {
+                var bilangan = parseInt(angka);
+                var tabelcontainer = document.getElementById("tabel-container");
+                var tabelhasil = "<table>";
+                for (var i = 1; i <= bilangan; i++) {
+                    var hasil = bilangan * i;
+                    tabelhasil += `<tr> <td>${bilangan}</td> <td>x</td> <td>${i}</td> <td>${hasil}</td> </tr>`;
+                }
+                tabelhasil += "</table>";
+                tabelcontainer.innerHTML = tabelhasil;
+                break;
+            } else {
+                alert("Input yang Anda masukkan tidak berupa angla. Mohon masukkan angka.");
+            }
+        }
+    </script>
+</body>
+</html>
