@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373038-Character Counter</title>
+    <script>
+        function call_onKeyPress(ob) {
+        var obval = ob.value;
+    
+        if (obval.length > 256) {
+            ob.value = obval.substr(0, 256);
+            obval = ob.value;
+        }
+        document.getElementById("txt2").value = obval.length + "/256";
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label>Judul :</label>
+        <input type="text"><br><br>
+        <label>Deskripsi :</label><br>
+        <textarea onkeyup="call_onKeyPress(this)" onkeydown="call_onKeyPress(this)" rows="6" cols="30"></textarea><br>
+        <input type="text" id="txt2" value="0/256" readonly>
+    </form>
+</body>
+</html>
