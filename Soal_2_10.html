@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373038-Soal_2_10</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        div {
+            margin-top: 5px;
+        }
+        .underline {
+            text-decoration: underline;
+        }
+        button {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="inputnama">
+    <button id="addbtn">Add</button>
+    <button id="searchbtn">Search</button>
+    <div id="listnama">
+        <div>John Resig</div>
+        <div>George Martin</div>
+        <div>Malcom John Sinclair</div>
+        <div>J. Ohn</div>
+    </div>
+
+<script>
+    $(document).ready(function(){
+        $("#addbtn").click(function() {
+            const name = $("#inputnama").val().trim();
+            if (name) {
+                $("<div>" + name + "</div>").appendTo("#listnama");
+                $("#inputnama").val("");
+            }
+        });
+
+        $("#searchbtn").click(function() {
+            const query = $("#inputnama").val().trim();
+            $("#listnama div").removeClass("underline");
+            if (query) {
+                $("#listnama div:contains('" + query + "')").addClass("underline");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

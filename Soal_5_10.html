@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373038-Soal_5_10</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+        }
+        #search {
+            width: 200px;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+        .highlight {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="search">
+    <div id="companylist">
+        <div>Sun Microsystem</div>
+        <div>Apache Software Foundation</div>
+        <div>Oracle Coorporation</div>
+        <div>International Business Machines</div>
+        <div>Microsoft Coorporation</div>
+        <div>Apple Inc</div>
+        <div>Sap Ag</div>
+        <div>Accenture</div>
+        <div>Computer Sciences Coorporation</div>
+        <div>Google</div>
+        <div>Softbank</div>
+        <div>Yahoo</div>
+    </div>
+
+<script>
+    $(document).ready(function() {
+        $("#search").on("input", function() {
+            var searchText = $(this).val().toLowerCase();
+            $("#companylist div").each(function() {
+                var companyName = $(this).text().toLowerCase();
+                if (companyName.includes(searchText) && searchText !== "") {
+                    $(this).addClass("highlight");
+                } else {
+                    $(this).removeClass("highlight");
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

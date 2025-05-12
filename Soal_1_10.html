@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373038-Soal_1_10</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        ol.menu {
+            display: flex;
+            background-color: hotpink;
+            list-style-type: none;
+            text-decoration: underline white;
+        }
+        ol.menu > li {
+            position: relative;
+            padding: 10px 20px;
+            color: white;
+        }
+        ol.menu > li ol {
+            display: none;
+            position: absolute;
+            background-color: white;
+            list-style-type: none;
+            padding: 0;
+            border: 1px solid hotpink;
+        }
+        ol.menu > li ol li {
+            padding: 5px;
+            color: black;
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <ol class="menu">
+        <li>jQuery
+            <ol>
+                <li>Download</li>
+                <li>Documentation</li>
+                <li>Blog</li>
+            </ol>
+        </li>
+        <li>Community
+            <ol>
+                <li>Mailing List</li>
+                <li>Tutorials</li>
+                <li>Demos</li>
+                <li>Plugins</li>
+            </ol>
+        </li>
+        <li>Development
+            <ol>
+                <li>Source Code</li>
+                <li>Bug Tracking</li>
+                <li>Recent Changes</li>
+            </ol>
+        </li>
+    </ol>
+
+<script>
+    $(document).ready(function(){
+        $("ol.menu > li").hover(function() {
+            $(this).children("ol").stop(true, true).slideDown(200);
+        }, function() {
+            $(this).children("ol").stop(true, true).slideUp(200);
+        });
+    });
+</script>
+
+</body>
+</html>

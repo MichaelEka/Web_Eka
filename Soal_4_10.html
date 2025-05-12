@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373038-Soal_4_10</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td width="50" align="center">
+                <input class="header" type="checkbox"/><br/>
+                <hr/>
+                <input class="body" type="checkbox"/><br/>
+                <input class="body" type="checkbox"/><br/>
+                <input class="body" type="checkbox"/><br/>
+                <input class="body" type="checkbox"/><br/>
+                <input class="body" type="checkbox"/><br/>
+            </td>
+        </tr>
+    </table>
+
+<script>
+    $(document).ready(function() {
+        $(".header").click(function() {
+            if ($(this).is(":checked")) {
+                $("input:checkbox.body").prop("checked", true);
+            } else {
+                $("input:checkbox.body").prop("checked", false);
+            }
+        });
+
+        $(".body").click(function() {
+            if ($(".body:checked").length === $(".body").length) {
+                $(".header").prop("checked", true);
+            } else {
+                $(".header").prop("checked", false);
+            }
+        });
+    });
+</script>
+</body>
+</html>
