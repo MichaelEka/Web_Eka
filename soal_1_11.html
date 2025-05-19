@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373038-soal 1-prak11</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <style>
+        .divv{
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .div2{
+            border: 1px solid black;
+            padding: 10px;
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        table{
+            border-collapse: collapse;
+        }
+
+        th{
+            background-color: black;
+            color: white;
+            border: solid 1px black;
+        }
+
+        td{
+            border: solid 1px black;
+        }
+
+        tr:nth-child(odd){
+            background-color: #FFFFCC;
+            border: solid 1px black;
+        }
+
+        tr:nth-child(even){
+            background-color: #CCFFAA;
+            border: solid 1px black;
+        }
+    </style>
+
+    <script>
+        $(document).ready(
+            function(){
+                $("#search").click(function() {
+                    let kelas = $(":radio[name='kelas']:checked").val();
+                    let url = '';
+                    if (kelas === 'kelasa') {
+                        url = 'nilaiA.json';
+                    } else if (kelas === 'kelasb') {
+                        url = 'nilaiB.json';
+                    } else {
+                        url = 'nilai.json';
+                    }
+                    $("#daftarmahasiswa tbody").empty();
+
+                $.getJSON(url, function(data) {
+                    $.each(data.nilai, function() {
+                        $("#daftarmahasiswa tbody").append(
+                            "<tr>"+
+                            "<td>"+this.nrp+"</td>"+
+                            "<td>"+this.nama+"</td>"+
+                            "<td>"+this.kelas+"</td>"+
+                            "<td>"+this.nilaiakhir+"</td>"+
+                            "</tr>"
+                        );
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="divv">Selamat! Berikut adalah Daftar Mahasiswa yang mendapat<br>
+        Nilai A Pemrograman Web SI tahun Ajaran 2024/2025
+    </div>
+
+    <div class="div2">
+        <input type="radio" value="all" name="kelas"> All<br>
+        <input type="radio" value="kelasa" name="kelas"> Kelas A<br>
+        <input type="radio" value="kelasb" name="kelas"> Kelas B<br>
+        <input type="button" value="search" id="search">
+    </div>
+
+    <table id="daftarmahasiswa">
+		<thead>
+			<th>NRP</th>
+			<th>NAMA</th>
+			<th>KELAS</th>
+			<th>NILAI AKHIR</th>
+		</thead>
+        <tbody>
+        </tbody>
+	</table>
+</body>
+</html>

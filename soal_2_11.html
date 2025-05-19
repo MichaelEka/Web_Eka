@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373038-Soal_2_11</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <style>
+    table{
+        width: 200px;
+    }
+
+    .judul{
+        font-size: 40px;
+        text-align: center;
+    }
+
+    </style>
+    <script>
+        $(function () {
+            $('#look').click(function() {
+                $.getJSON('SIJson.json', function (json) {
+                    $('#result').empty();
+                    $('#result').append(`
+                        <div class="judul">
+                            <a href="${json.link}" target="_blank">${json.title}</a>
+                        </div><br><hr>
+                    `);
+                    $.each(json.items, function(i, item) {
+                        $('#result').append(`
+                            <a href="${item.link}" target="_blank">${item.title}</a><br>
+                            By : ${item.author} / <i>${item.published}</i><br><br>
+                            ${item.description}<br><br>
+                            Universitas : <a href="${item.universitas.m}" target="_blank">Click Here</a><br>
+                            Tag(s) : ${item.tags}<br><br>
+                            
+                        `);
+                    });
+                    $('#result').show();
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <table border="1px">
+            <tr>
+                <td>Title</td>
+            </tr>
+            <tr>
+                <td>Content</td>
+            </tr>
+            <tr>
+                <td>Generator</td>
+            </tr>
+        </table>
+        <br>
+    </div>
+    <button id="look">Look</button>
+    <div id="result"></div>
+</body>
+</html>
