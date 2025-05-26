@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2373038-soal 1-prak12</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        .tdadd {
+            font-size: 20px;
+            text-align: center;
+            background-color: grey;
+        }
+        #message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+        $('#resetBtn').click(function () {
+            $('#name').val('');
+            $('#password').val('');
+            $('#confirmPassword').val('');
+            $('#position').val('Senior Programmer');
+            $('#message').html('');
+        });
+        $('#profileForm').submit(function (e) {
+            let name = $('#name').val().trim();
+            let password = $('#password').val();
+            let confirmPassword = $('#confirmPassword').val();
+            let msg = '';
+
+            if (!name) msg += 'Input Nama belum di isi!<br>';
+            if (!password) msg += 'Input Password belum di isi!<br>';
+            if (!confirmPassword) msg += 'Input Confirm Password belum di isi!<br>';
+            if (password && confirmPassword && password !== confirmPassword) {
+            msg += 'Password dan Confirm Password belum sama!<br>';
+            }
+            if (msg !== '') {
+            e.preventDefault();
+            $('#message').html(msg);
+            }
+        });
+        });
+    </script>
+</head>
+<body>
+    <form id="profileForm" method="POST" action="index.php">
+        <table border="1">
+            <tr>
+                <td class="tdadd" colspan="2px">Add Profile</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td>Position</td>
+                <td>
+                <select name="position" id="position">
+                    <option>Programmer</option>
+                    <option selected>Senior Programmer</option>
+                    <option>Junior Programmer</option>
+                    <option>System Analyst</option>
+                    <option>Senior Analyst</option>
+                    <option>Junior Analyst</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" id="password"></td>
+            </tr>
+            <tr>
+                <td>Confirm Password</td>
+                <td><input type="password" id="confirmPassword"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                <button type="button" id="resetBtn">Reset</button>
+                <button type="submit" id="saveBtn">Save</button>
+                </td>
+            </tr>
+            </table>
+            <div id="message"></div>
+    </form>
+</body>
+</html>
